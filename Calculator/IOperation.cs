@@ -8,6 +8,6 @@ namespace Calculator
 {
     internal interface IOperation
     {
-        public void DoOperation(int i, int j);
+        public int DoOperation(int i, int j);
     }
 }

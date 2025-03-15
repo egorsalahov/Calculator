@@ -12,9 +12,9 @@ namespace Calculator
 
         public void SetOperation(IOperation operation) { _operation = operation; }
 
-        public void DoCalulate(int i, int j)
+        public int DoCalulate(int i, int j)
         {
-            _operation.DoOperation(i,j);
+            return _operation.DoOperation(i, j);
         }
     }
 }

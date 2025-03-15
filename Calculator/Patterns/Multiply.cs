@@ -8,9 +8,9 @@ namespace Calculator.Patterns
 {
     internal class Multiply : IOperation
     {
-        public void DoOperation(int i, int j)
+        public int DoOperation(int i, int j)
         {
-            Console.WriteLine(i * j);
+           return  i * j;
         }
     }
 }
