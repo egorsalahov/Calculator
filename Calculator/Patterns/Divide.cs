@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace Calculator.Patterns
 {
-    internal class Divide : IOperation
+    public class Divide : IOperation
     {
-        public void DoOperation(int i, int j)
+        public int DoOperation(int i, int j)
         {
-            Console.WriteLine(i / j);
+            return i / j;
         }
     }
 }

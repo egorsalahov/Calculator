@@ -1,18 +1,34 @@
 ﻿using Calculator;
 using Calculator.Patterns;
 
-string s = Console.ReadLine();
-string[] split = s.Split(" ");
-int i = Convert.ToInt32(split[0]);
-int j = Convert.ToInt32(split[2]);
+int result = 0;
 
 CalculatorClass calculator = new CalculatorClass();
 
-switch (split[1].ToString())
-{
-    case "+": calculator.SetOperation(new Plus()); calculator.DoCalulate(i, j); break;
-    case "-": calculator.SetOperation(new Minus()); calculator.DoCalulate(i, j); break;
-    case "*": calculator.SetOperation(new Multiply()); calculator.DoCalulate(i, j); break;
-    case "/": calculator.SetOperation(new Divide()); calculator.DoCalulate(i, j); break;
-    default: Console.WriteLine("Такой операции нет"); break;
-}
+string s = Console.ReadLine();
+string[] split = s.Split(" "); //четное - число, нечетное - операция
+
+    for (int i = 0; i < split.Length; i++)
+    {
+        if (i % 2 == 0)
+        {
+            continue;
+        }
+
+        if (split[i].ToString() == "*" || split[i].ToString() == "/")
+        {
+            switch (split[i].ToString())
+            {
+                case "*": calculator.SetOperation(new Multiply()); result += calculator.DoCalulate(Convert.ToInt32(split[i - 1]), Convert.ToInt32(split[i + 1])); break;
+                case "/": calculator.SetOperation(new Divide()); result += calculator.DoCalulate(Convert.ToInt32(split[i - 1]), Convert.ToInt32(split[i + 1])); break;
+            }
+        }
+
+        switch (split[i].ToString())
+        {
+            case "+": calculator.SetOperation(new Plus()); result += calculator.DoCalulate(Convert.ToInt32(split[i - 1]), Convert.ToInt32(split[i + 1])); break;
+            case "-": calculator.SetOperation(new Minus()); result += calculator.DoCalulate(Convert.ToInt32(split[i - 1]), Convert.ToInt32(split[i + 1])); break;
+        }
+    }
+
+    Console.WriteLine(result);
