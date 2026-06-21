@@ -6,8 +6,9 @@ using System.Threading.Tasks;
 
 namespace Calculator
 {
-    internal interface IOperation
+    public interface IOperation
     {
-        public void DoOperation(int i, int j);
+        
+        public int DoOperation(int i, int j);
     }
 }
